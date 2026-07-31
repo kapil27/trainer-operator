@@ -39,7 +39,6 @@ rules:
   - ""
   resources:
   - namespaces
-  - secrets
   verbs:
   - create
   - get
@@ -54,6 +53,25 @@ rules:
   verbs:
   - get
   - list
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - create
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resourceNames:
+  - kubeflow-trainer-webhook-cert
+  resources:
+  - secrets
+  verbs:
+  - delete
+  - get
+  - patch
+  - update
 - apiGroups:
   - admissionregistration.k8s.io
   resources:
@@ -240,7 +258,9 @@ rules:
   resources:
   - clusterroles
   verbs:
+  - bind
   - delete
+  - escalate
   - get
   - patch
   - update
