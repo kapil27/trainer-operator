@@ -34,11 +34,6 @@ spec:
                   containers:
                     - name: node
                       image: quay.io/opendatahub/odh-th-torch-cuda-py312:odh-stable
-                      resources:
-                        limits:
-                          nvidia.com/gpu: "1"
-                        requests:
-                          nvidia.com/gpu: "1"
         - groupName: default
           name: node
           replicas: 1
@@ -60,8 +55,3 @@ spec:
                         initialDelaySeconds: 3
                         tcpSocket:
                           port: 2222
-                      resources:
-                        limits:
-                          nvidia.com/gpu: "1"
-                        requests:
-                          nvidia.com/gpu: "1"
