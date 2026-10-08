@@ -34,6 +34,11 @@ spec:
                   containers:
                     - name: node
                       image: quay.io/opendatahub/odh-th-torch-cpu-py312:odh-stable
+                      env:
+                        - name: OMPI_MCA_pml
+                          value: ob1
+                        - name: OMPI_MCA_btl
+                          value: self,tcp
         - groupName: default
           name: node
           replicas: 1
@@ -44,6 +49,11 @@ spec:
                   containers:
                     - name: node
                       image: quay.io/opendatahub/odh-th-torch-cpu-py312:odh-stable
+                      env:
+                        - name: OMPI_MCA_pml
+                          value: ob1
+                        - name: OMPI_MCA_btl
+                          value: self,tcp
                       command:
                         - /usr/local/bin/uid_entrypoint.sh
                         - /usr/sbin/sshd
